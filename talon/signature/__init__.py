@@ -28,8 +28,10 @@ from . import extraction
 from . extraction import extract
 from . learning import classifier
 
-
-DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
+if 'TALON_DATA_DIR' in os.environ:
+    DATA_DIR = os.environ['TALON_DATA_DIR']
+else:
+    DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
 
 EXTRACTOR_FILENAME = os.path.join(DATA_DIR, 'classifier')
 EXTRACTOR_DATA = os.path.join(DATA_DIR, 'train.data')
